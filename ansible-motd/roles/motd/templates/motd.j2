@@ -1,0 +1,19 @@
+
+-------------------------------------------------
+UNAUTHORIZED ACCESS TO THIS SYSTEM IS PROHIBITED
+-------------------------------------------------
+
+Hostname      	:	{{ ansible_fqdn }}
+OS Version    	:	{{ ansible_distribution }} {{ ansible_distribution_version }}
+IP Address    	:	{{ ansible_default_ipv4.address }}
+Memory	      	:	{{ (ansible_memtotal_mb / 1024) | round (1) }} GB
+System Type   	:	{{ 'Virtual' if ansible_virtualization_role  == 'guest' else 'Physical' }}
+Kernel Version	: 	{{ ansible_kernel.split('.el')[0] | lower }}
+Uptime		:	{{ (ansible_uptime_seconds / 60) | int }} Minutes
+MAC Address	:	{{ ansible_default_ipv4.macaddress }}
+
+You must have explicit, authorized permission to access or configure this device. 
+Unauthorized attempts and actions to access or use this system may result in civil and/or criminal penalties. 
+All activities performed on this device are logged and monitored.
+Disconnect IMMEDIATELY if you are not an authorized user
+

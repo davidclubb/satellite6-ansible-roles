@@ -1,0 +1,5 @@
+---
+- name: Detect Operating System
+  fail:
+    msg: "Detected {{ ansible_distribution }} {{ ansible_distribution_major_version }} OS is not compatible with this Playbook. Exiting Now."
+  when: not ('"RedHat" in ansible_os_name or "7" in ansible_distribution_major_version')

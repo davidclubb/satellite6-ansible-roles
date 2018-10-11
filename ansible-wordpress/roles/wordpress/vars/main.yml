@@ -1,0 +1,14 @@
+---
+# vars file for wordpress
+mariadb_root_password: 'changeme'
+wp_db_name: 'wp_db'
+wp_db_username: 'wp_user'
+wp_db_password: 'changeme'
+wp_tar_location: 'https://www.wordpress.org/latest.tar.gz'
+wp_dependencies:
+  - httpd
+  - mariadb-server
+  - mariadb
+  - php
+  - php-mysql
+  - MySQL-python

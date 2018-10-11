@@ -1,0 +1,10 @@
+---
+- name: Fully update system
+  yum:
+    name: '*'
+    state: latest
+
+- name: Install WordPress dependency packages
+  yum:
+    name: "{{ item }}"
+  with_items: "{{ wp_dependencies }}"

@@ -1,0 +1,7 @@
+---
+# tasks file for wordpress
+- include_tasks: check-requirements.yml
+- include_tasks: install-basic-packages.yml
+- include_tasks: setup-mariadb.yml
+- include_tasks: setup-wordpress.yml
+- include_tasks: install-configure-firewall.yml
