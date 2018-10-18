@@ -14,7 +14,8 @@
     dest: /var/www/html/wp-config.php
     mode: 0644
 
-- name: Start HTTPD service
+- name: Restart HTTPD service
   service:
     name: httpd
-    state: started
+    state: restarted
+    enabled: yes
