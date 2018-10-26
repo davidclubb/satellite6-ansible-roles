@@ -1,5 +1,5 @@
 ---
 - name: Setup MOTD file 
-  hosts: localhost
+  hosts: all
   roles:
     - motd
