@@ -1,0 +1,7 @@
+[haproxy]
+haproxy.example.com
+
+[capsules]
+capsule01.example.com
+capsule02.example.com
+
