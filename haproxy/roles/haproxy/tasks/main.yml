@@ -1,0 +1,33 @@
+---
+- name: Install Satellite 6 bootstrap RPM
+  yum:
+    name: "http://{{ satellite_fqdn }}/pub/katello-ca-consumer-latest.noarch.rpm"
+    state: present
+  when: register_to_satellite
+
+- name: Register system to Satellite 6 using {{ activation_key }} activation key
+  redhat_subscription:
+    activationkey: "{{ activation_key }}"
+    org_id: "{{ org_label }}"
+    state: present
+  when: register_to_satellite
+
+- name: Install HA Proxy package
+  package:
+    name: haproxy
+    state: present
+
+- name: Copy the HA Proxy configuration file
+  template:
+    src: haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+    validate: haproxy -c -f %s
+  notify:
+    - restart haproxy service
+
+- name: Start and Enable HAProxy Service
+  service:
+    name: haproxy
+    state: started
+    enabled: yes
+  

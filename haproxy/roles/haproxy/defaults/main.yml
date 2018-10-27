@@ -1,0 +1,8 @@
+---
+register_to_satellite: true
+satellite_fqdn: satellite.example.com
+org_label: ACME_Corp  ### Run "hammer organization list" command to find the ORG Label
+activation_key: default  ### Run "hammer activation-key list --organization-id <ID>" to find the activation keys
+capsules:
+  - capsule01.example.com
+  - capsule02.example.com

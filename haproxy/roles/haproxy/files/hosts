@@ -1,0 +1,10 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+### Satellite 6.4 Environment ###
+    # Domain : redhat.lab #
+
+192.168.123.9	satellite.redhat.lab	satellite
+192.168.123.21	capsule01.redhat.lab	capsule01
+192.168.123.22	capsule02.redhat.lab	capsule02
+192.168.123.23	haproxy.redhat.lab	haproxy
