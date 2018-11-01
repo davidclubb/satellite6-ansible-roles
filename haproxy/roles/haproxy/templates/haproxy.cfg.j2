@@ -91,7 +91,7 @@ backend f-proxy-amqp
    option tcp-check
    balance roundrobin
 {% for host in groups['capsules'] %}
-   server f-proxy-https-{{loop.index}} {{ hostvars[host]['ansible_all_ipv4_addresses'][0] }}:80 check
+   server f-proxy-amqp-{{loop.index}} {{ hostvars[host]['ansible_all_ipv4_addresses'][0] }}:5647 check
 {% endfor %}
 
 #anaconda
@@ -105,7 +105,7 @@ backend f-proxy-anaconda
    option tcp-check
    balance roundrobin
 {% for host in groups['capsules'] %}
-   server f-proxy-https-{{loop.index}} {{ hostvars[host]['ansible_all_ipv4_addresses'][0] }}:80 check
+   server f-proxy-anaconda-{{loop.index}} {{ hostvars[host]['ansible_all_ipv4_addresses'][0] }}:8000 check
 {% endfor %}
 
 #puppet
@@ -119,7 +119,7 @@ backend f-proxy-puppet
    option tcp-check
    balance roundrobin
 {% for host in groups['capsules'] %}
-   server f-proxy-https-{{loop.index}} {{ hostvars[host]['ansible_all_ipv4_addresses'][0] }}:80 check
+   server f-proxy-puppet-{{loop.index}} {{ hostvars[host]['ansible_all_ipv4_addresses'][0] }}:8140 check
 {% endfor %}
 
 #puppet-ca
@@ -132,7 +132,7 @@ frontend puppet-ca
 backend f-proxy-puppet-ca
    option tcp-check
    balance roundrobin
-server f-proxy-puppet-ca-1 {{ hostvars[capsules[0]].ansible_default_ipv4.address }}:8140 check
+server f-proxy-puppet-ca-1 {{ hostvars[capsules[0]].ansible_default_ipv4.address }}:8141 check
 
 #rhsm
 frontend rhsm
@@ -145,7 +145,7 @@ backend f-proxy-rhsm
    option tcp-check
    balance roundrobin
 {% for host in groups['capsules'] %}
-   server f-proxy-https-{{loop.index}} {{ hostvars[host]['ansible_all_ipv4_addresses'][0] }}:80 check
+   server f-proxy-rhsm-{{loop.index}} {{ hostvars[host]['ansible_all_ipv4_addresses'][0] }}:8443 check
 {% endfor %}
 
 #scap
@@ -159,7 +159,7 @@ backend f-proxy-scap
    option tcp-check
    balance roundrobin
 {% for host in groups['capsules'] %}
-   server f-proxy-https-{{loop.index}} {{ hostvars[host]['ansible_all_ipv4_addresses'][0] }}:80 check
+   server f-proxy-scap-{{loop.index}} {{ hostvars[host]['ansible_all_ipv4_addresses'][0] }}:9090 check
 {% endfor %}
 
 #docker
@@ -173,5 +173,5 @@ backend f-proxy-docker
    option tcp-check
    balance roundrobin
 {% for host in groups['capsules'] %}
-   server f-proxy-https-{{loop.index}} {{ hostvars[host]['ansible_all_ipv4_addresses'][0] }}:80 check
+   server f-proxy-docker-{{loop.index}} {{ hostvars[host]['ansible_all_ipv4_addresses'][0] }}:5000 check
 {% endfor %}
